@@ -1,0 +1,156 @@
+/* Basic page styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #dbeafe, #fce7f3);
+    color: #1f2937;
+}
+
+/* Main content */
+.container {
+    width: 100%;
+    max-width: 25rem;
+    text-align: center;
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.12);
+}
+
+h1 {
+    font-size: clamp(1.7rem, 6vw, 2.3rem);
+    margin-bottom: 0.75rem;
+}
+
+.subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+/* Dice design */
+.dice {
+    width: clamp(6rem, 30vw, 9rem);
+    aspect-ratio: 1;
+    margin: 0 auto 1.5rem;
+    padding: 15%;
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 1.25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5%;
+}
+
+/* Individual dice dots */
+.dot {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #111827;
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+}
+
+/* Hide dots that are not needed */
+.dot.hidden {
+    visibility: hidden;
+}
+
+/* Dice rolling animation */
+.dice.rolling {
+    animation: roll 0.5s ease-in-out;
+}
+
+@keyframes roll {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    25% {
+        transform: rotate(15deg) scale(1.08);
+    }
+    50% {
+        transform: rotate(-15deg) scale(1.08);
+    }
+    75% {
+        transform: rotate(10deg) scale(1.04);
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+#result {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    min-height: 1.5rem;
+}
+
+/* Roll button */
+button {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.9rem 1.25rem;
+    border: none;
+    border-radius: 0.75rem;
+    background: #6366f1;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background: #4f46e5;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button:focus-visible {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 3px;
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+/* Smaller screens */
+@media (max-width: 360px) {
+    .container {
+        padding: 1.25rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
